@@ -1,10 +1,9 @@
-# nike_app
+# Shoe Box App
 
-A new Flutter project.
+## Implementation of a shoe app design
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+This is a Flutter/Dart implementation of a shoe app design.
+- Designed by [Sang Nguyen](https://dribbble.com/sanggggg)
 
 A few resources to get you started if this is your first Flutter project:
 
