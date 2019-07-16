@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nike_app/ui/home/boxes/shoe.dart';
+import 'package:nike_app/ui/home/boxes/shoeBox.dart';
 
 class HomeBottom extends StatefulWidget {
   @override
@@ -6,6 +8,47 @@ class HomeBottom extends StatefulWidget {
 }
 
 class _HomeBottomState extends State<HomeBottom> {
+  double _itemWidth;
+  List<ShoeBox> boxes;
+  ScrollController _ctrScroll;
+
+  _onStartScroll(ScrollMetrics metrics) {
+    setState(() {
+      print("Start") ;
+    });
+  }
+
+  _onUpdateScroll(ScrollMetrics metrics) {
+    setState(() {
+      print(metrics.extentAfter);
+    });
+  }
+
+  _onEndScroll(ScrollMetrics metrics) {
+    setState(() {
+      print("End");
+    });
+  }
+
+  _scrollListener() {
+    double itemSize = MediaQuery.of(context).size.width - 50;
+
+    // commented out code on mobile base station
+  }
+
+  @override
+  void initState() {
+    _ctrScroll = ScrollController();
+    _ctrScroll.addListener(_scrollListener);
+    boxes = List<ShoeBox>();
+    boxes.add(ShoeBox("Nike 1", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 1", false)));
+    boxes.add(ShoeBox("Nike 2", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 2", false)));
+    boxes.add(ShoeBox("Nike 3", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 3", false)));
+    boxes.add(ShoeBox("Nike 4", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 4", false)));
+    boxes.add(ShoeBox("Nike 5", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 5", false)));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +76,26 @@ class _HomeBottomState extends State<HomeBottom> {
             Container(
               height: 320,
               color: Colors.transparent,
-              child: Center(child:Text("Slider Goes here for Boxes")),
+              //slider
+              child: NotificationListener<ScrollNotification>(
+                onNotification: (scrollNotification) {
+                  if(scrollNotification is ScrollStartNotification) {
+                    _onStartScroll(scrollNotification.metrics);
+                  } else if (scrollNotification is ScrollUpdateNotification) {
+                    _onUpdateScroll(scrollNotification.metrics);
+                  } else if (scrollNotification is ScrollEndNotification) {
+                    _onEndScroll(scrollNotification.metrics);
+                  }
+                },
+                child: ListView.builder(
+                  controller: _ctrScroll,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: boxes.length,
+                  itemBuilder: (context, index) {
+                    return boxes[index];
+                  },
+                ),
+              ),
             ),
             Container(
               height: 150,
@@ -48,7 +110,7 @@ class _HomeBottomState extends State<HomeBottom> {
                     ),
                   ),
                   SizedBox(height: 15.0),
-                  Text("Nike Air Max",
+                  Text("Adidas Shoe",
                     style: TextStyle(
                       fontSize: 35.0,
                       color: Colors.grey.shade800,

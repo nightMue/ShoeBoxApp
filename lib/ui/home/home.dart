@@ -22,7 +22,8 @@ class _HomeState extends State<Home> {
           titleSpacing: 0.0,
           title: 
           Image.network(
-            "https://i.imgur.com/ALRk9y6.png",
+            // nike "https://i.imgur.com/ALRk9y6.png",
+            "https://i.imgur.com/4akrVvG.png",
             fit: BoxFit.fitHeight,
             color: Colors.grey.shade800,
           ),
