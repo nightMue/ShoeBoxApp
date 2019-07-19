@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nike_app/ui/home/boxes/shoe.dart';
 import 'package:nike_app/ui/home/boxes/shoeBox.dart';
+import 'package:nike_app/data/tempData.dart';
+import 'package:nike_app/ui/home/homeBottomDetails.dart';
 
 class HomeBottom extends StatefulWidget {
   @override
@@ -9,7 +11,7 @@ class HomeBottom extends StatefulWidget {
 
 class _HomeBottomState extends State<HomeBottom> {
   double _itemWidth;
-  List<ShoeBox> boxes;
+  //List<ShoeBox> boxes;
   ScrollController _ctrScroll;
 
   _onStartScroll(ScrollMetrics metrics) {
@@ -40,12 +42,12 @@ class _HomeBottomState extends State<HomeBottom> {
   void initState() {
     _ctrScroll = ScrollController();
     _ctrScroll.addListener(_scrollListener);
-    boxes = List<ShoeBox>();
-    boxes.add(ShoeBox("Nike 1", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 1", false)));
-    boxes.add(ShoeBox("Nike 2", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 2", false)));
-    boxes.add(ShoeBox("Nike 3", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 3", false)));
-    boxes.add(ShoeBox("Nike 4", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 4", false)));
-    boxes.add(ShoeBox("Nike 5", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 5", false)));
+    //boxes = List<ShoeBox>();
+    //boxes.add(ShoeBox("Nike 1", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 1", false)));
+    //boxes.add(ShoeBox("Nike 2", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 2", false)));
+    //boxes.add(ShoeBox("Nike 3", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 3", false)));
+    //boxes.add(ShoeBox("Nike 4", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 4", false)));
+    //boxes.add(ShoeBox("Nike 5", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 5", false)));
     super.initState();
   }
 
@@ -97,7 +99,26 @@ class _HomeBottomState extends State<HomeBottom> {
                 ),
               ),
             ),
+
+            // cant use this with same scroll controller
+            // move listview out to here and use same controller as above
+            // ----------------
+            // HomeBottomDetails(),
+            // ----------------
             Container(
+              height: 150,
+              color: Colors.transparent,
+              child: ListView.builder(
+                controller: _ctrScroll,
+                scrollDirection: Axis.horizontal,
+                itemCount: details.length,
+                itemBuilder: (context, index) {
+                  return details[index];
+                },
+              ),
+            ),
+
+            /*Container(
               height: 150,
               color: Colors.transparent,
               child: Column(
@@ -127,7 +148,7 @@ class _HomeBottomState extends State<HomeBottom> {
                   ),
                 ],
               ),
-            ),
+            ),*/
             Container(
               height: 100,
               color:Colors.transparent,
