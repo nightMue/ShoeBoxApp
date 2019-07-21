@@ -4,44 +4,45 @@ import 'package:nike_app/ui/home/boxes/shoeBox.dart';
 import 'package:nike_app/data/tempData.dart';
 import 'package:nike_app/ui/home/homeBottomDetails.dart';
 
+import 'package:rect_getter/rect_getter.dart';
+
 class HomeBottom extends StatefulWidget {
   @override
   _HomeBottomState createState() => _HomeBottomState();
 }
 
 class _HomeBottomState extends State<HomeBottom> {
-  double _itemWidth;
-  //List<ShoeBox> boxes;
   ScrollController _ctrScroll;
+  ScrollController _ctrScrollDetails;
 
   _onStartScroll(ScrollMetrics metrics) {
-    setState(() {
-      print("Start") ;
-    });
+
   }
 
   _onUpdateScroll(ScrollMetrics metrics) {
-    setState(() {
-      print(metrics.extentAfter);
-    });
+
   }
 
   _onEndScroll(ScrollMetrics metrics) {
-    setState(() {
-      print("End");
-    });
+
   }
 
-  _scrollListener() {
-    double itemSize = MediaQuery.of(context).size.width - 50;
 
-    // commented out code on mobile base station
+  _scrollListener() {
+
+  }
+
+  _scrollListenerDetails() {
+
   }
 
   @override
   void initState() {
     _ctrScroll = ScrollController();
     _ctrScroll.addListener(_scrollListener);
+    _ctrScrollDetails = ScrollController();
+    _ctrScrollDetails.addListener(_scrollListenerDetails);
+
     //boxes = List<ShoeBox>();
     //boxes.add(ShoeBox("Nike 1", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 1", false)));
     //boxes.add(ShoeBox("Nike 2", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 2", false)));
@@ -109,7 +110,7 @@ class _HomeBottomState extends State<HomeBottom> {
               height: 150,
               color: Colors.transparent,
               child: ListView.builder(
-                controller: _ctrScroll,
+                controller: _ctrScrollDetails,
                 scrollDirection: Axis.horizontal,
                 itemCount: details.length,
                 itemBuilder: (context, index) {
