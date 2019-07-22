@@ -30,16 +30,15 @@ class _HomeBottomState extends State<HomeBottom> {
     double offset = _ctrScroll.offset;
     for(var i = 1; i < boxOffsets.length; i++)
     {
-      //print(offsets[i-1]);
       double small = boxOffsets[i-1];
       double big = boxOffsets[i];
-      
-      //print(" i = $i");
-      //print("       small = $small");
-      //print("       big = $big");
+     
       if(offset > small && offset < big)
       {
-        _ctrScroll.animateTo(boxOffsets[i+1], duration:Duration(milliseconds: 100), curve: Curves.linear);
+        _ctrScroll.animateTo(
+          boxOffsets[i+1],
+          duration:Duration(milliseconds: 100), 
+          curve: Curves.linear);
       }
     }
   }
