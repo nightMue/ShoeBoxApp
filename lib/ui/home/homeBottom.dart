@@ -12,6 +12,9 @@ class HomeBottom extends StatefulWidget {
 }
 
 class _HomeBottomState extends State<HomeBottom> {
+
+  List<double> boxOffsets; 
+
   ScrollController _ctrScroll;
   ScrollController _ctrScrollDetails;
 
@@ -24,7 +27,21 @@ class _HomeBottomState extends State<HomeBottom> {
   }
 
   _onEndScroll(ScrollMetrics metrics) {
-
+    double offset = _ctrScroll.offset;
+    for(var i = 1; i < boxOffsets.length; i++)
+    {
+      //print(offsets[i-1]);
+      double small = boxOffsets[i-1];
+      double big = boxOffsets[i];
+      
+      //print(" i = $i");
+      //print("       small = $small");
+      //print("       big = $big");
+      if(offset > small && offset < big)
+      {
+        _ctrScroll.animateTo(boxOffsets[i+1], duration:Duration(milliseconds: 100), curve: Curves.linear);
+      }
+    }
   }
 
 
@@ -42,7 +59,7 @@ class _HomeBottomState extends State<HomeBottom> {
     _ctrScroll.addListener(_scrollListener);
     _ctrScrollDetails = ScrollController();
     _ctrScrollDetails.addListener(_scrollListenerDetails);
-
+    boxOffsets = List<double>();
     //boxes = List<ShoeBox>();
     //boxes.add(ShoeBox("Nike 1", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 1", false)));
     //boxes.add(ShoeBox("Nike 2", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 2", false)));
@@ -54,6 +71,11 @@ class _HomeBottomState extends State<HomeBottom> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width-50;
+    for(var i = 0; i < boxes.length; i++)
+    {
+      boxOffsets.add(i*width);
+    }
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
