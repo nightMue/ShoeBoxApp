@@ -12,6 +12,9 @@ class HomeBottom extends StatefulWidget {
 }
 
 class _HomeBottomState extends State<HomeBottom> {
+  bool _favorited;
+  bool _stared;
+
   double _prefScrollLocation;
   int _currentIndex;
   List<double> boxOffsets; 
@@ -109,6 +112,20 @@ class _HomeBottomState extends State<HomeBottom> {
 
   }
 
+  void toggleFavorite()
+  {
+    setState(() {
+     _favorited = (_favorited ? false : true);
+    });
+  }
+
+  void toggleStar()
+  {
+    setState(() {
+      _stared = (_stared ? false : true) ;
+    });
+  }
+
   @override
   void initState() {
     _ctrScroll = ScrollController();
@@ -118,12 +135,8 @@ class _HomeBottomState extends State<HomeBottom> {
     boxOffsets = List<double>();
     _prefScrollLocation = 0.0;
     _currentIndex = 0;
-    //boxes = List<ShoeBox>();
-    //boxes.add(ShoeBox("Nike 1", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 1", false)));
-    //boxes.add(ShoeBox("Nike 2", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 2", false)));
-    //boxes.add(ShoeBox("Nike 3", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 3", false)));
-    //boxes.add(ShoeBox("Nike 4", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 4", false)));
-    //boxes.add(ShoeBox("Nike 5", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 5", false)));
+    _favorited = false;
+    _stared = false;
     super.initState();
   }
 
@@ -198,38 +211,6 @@ class _HomeBottomState extends State<HomeBottom> {
                 },
               ),
             ),
-
-            /*Container(
-              height: 150,
-              color: Colors.transparent,
-              child: Column(
-                children: <Widget>[
-                  Text("MEN'S SHOE",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  SizedBox(height: 15.0),
-                  Text("Adidas Shoe",
-                    style: TextStyle(
-                      fontSize: 35.0,
-                      color: Colors.grey.shade800,
-                      fontWeight: FontWeight.w500
-                    ),
-                  ),
-                  SizedBox(height: 20.0),
-                  Text("\$170",
-                    style: TextStyle(
-                      fontSize: 40.0,
-                      color: Colors.grey.shade800,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ],
-              ),
-            ),*/
             Container(
               height: 100,
               color:Colors.transparent,
@@ -238,44 +219,51 @@ class _HomeBottomState extends State<HomeBottom> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                    child: Container(
-                      height: 65,
-                      width: 65,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade300),
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                      child: Stack(
-                        children: <Widget>[
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Container(
-                              height: 20,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade800,
-                                shape: BoxShape.circle,
+                    child: GestureDetector(
+                      onTap: () => toggleStar(),
+                      child: Container(
+                        height: 65,
+                        width: 65,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade300),
+                          shape: BoxShape.circle,
+                          color: (_stared ? Colors.amber : Colors.white),
+                        ),
+                        child: Stack(
+                          children: <Widget>[
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Container(
+                                height: 20,
+                                width: 20,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade800,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: (_stared ? Icon(Icons.star, color: Colors.amber, size: 15.0,) : Icon(Icons.star, color: Colors.white, size: 15.0,)),
                               ),
-                              child: Icon(Icons.star, color: Colors.white, size: 15.0,),
                             ),
-                          ),
-                          Center(child: Text("4.3"),),
-                        ],
-                      )
+                            Center(child: Text("4.3"),),
+                          ],
+                        )
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
-                    child: Container(
-                      height: 65,
-                      width: 65,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade300),
-                        shape: BoxShape.circle,
-                        color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () => toggleFavorite(),
+                      child: Container(
+                        height: 65,
+                        width: 65,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade300),
+                          shape: BoxShape.circle,
+                          //color: (_favorited ? Colors.red : Colors.white),
+                          color: Colors.white
+                        ),
+                        child: (_favorited ? Icon(Icons.favorite, color: Colors.red,) : Icon(Icons.favorite_border, color: Colors.grey.shade800,)),
                       ),
-                      child: Icon(Icons.favorite_border, color: Colors.grey.shade800,),
                     ),
                   ),
                 ],
