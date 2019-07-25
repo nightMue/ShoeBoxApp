@@ -5,6 +5,9 @@
 This is a Flutter/Dart implementation of a shoe app design.
 - Designed by [Sang Nguyen](https://dribbble.com/sanggggg)
 
+The first page is a list view of brands for concept realizaion. Each brand will still take you to 
+the same one. It is just there to show some idea behind were this main boxe view page could be used.
+
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
