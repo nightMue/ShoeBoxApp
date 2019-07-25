@@ -28,11 +28,16 @@ class _HomeBottomState extends State<HomeBottom> {
 
   _onEndScroll(ScrollMetrics metrics) {
     double offset = _ctrScroll.offset;
+    _moveToItem(offset);
+  }
+
+  _moveToItem(double offset)
+  {
     for(var i = 1; i < boxOffsets.length; i++)
     {
       double small = boxOffsets[i-1];
       double big = boxOffsets[i];
-     
+
       if(offset > small && offset < big)
       {
         _ctrScroll.animateTo(
@@ -42,7 +47,6 @@ class _HomeBottomState extends State<HomeBottom> {
       }
     }
   }
-
 
   _scrollListener() {
 
@@ -71,7 +75,7 @@ class _HomeBottomState extends State<HomeBottom> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width-50;
-    for(var i = 0; i < boxes.length; i++)
+    for(var i = 0; i < adidasBoxes.length; i++)
     {
       boxOffsets.add(i*width);
     }
@@ -114,9 +118,9 @@ class _HomeBottomState extends State<HomeBottom> {
                 child: ListView.builder(
                   controller: _ctrScroll,
                   scrollDirection: Axis.horizontal,
-                  itemCount: boxes.length,
+                  itemCount: adidasBoxes.length,
                   itemBuilder: (context, index) {
-                    return boxes[index];
+                    return adidasBoxes[index];
                   },
                 ),
               ),
@@ -133,9 +137,9 @@ class _HomeBottomState extends State<HomeBottom> {
               child: ListView.builder(
                 controller: _ctrScrollDetails,
                 scrollDirection: Axis.horizontal,
-                itemCount: details.length,
+                itemCount: adidasDetails.length,
                 itemBuilder: (context, index) {
-                  return details[index];
+                  return adidasDetails[index];
                 },
               ),
             ),

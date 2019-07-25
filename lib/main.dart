@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nike_app/ui/home/brand/brandListView.dart';
 import 'package:nike_app/ui/home/home.dart';
 
 void main() => runApp(MyApp());
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Shoe Box",
       theme: ThemeData(backgroundColor: Color(0xffe7e9f0), fontFamily: 'Raleway'),
-      home: Home(title: "Shoe Box",),
+      //home: Home(title: "Shoe Box",),
+      home: BrandListView(),
     );
   }
 }

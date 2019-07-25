@@ -30,9 +30,9 @@ class _HomeBottomDetailsState extends State<HomeBottomDetails> {
       child: ListView.builder(
         controller: _ctrScroll,
         scrollDirection: Axis.horizontal,
-        itemCount: boxes.length,
+        itemCount: adidasBoxes.length,
         itemBuilder: (context, index) {
-          return details[index];
+          return adidasDetails[index];
         },
       ),
     );

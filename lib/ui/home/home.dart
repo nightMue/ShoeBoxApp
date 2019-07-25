@@ -37,6 +37,7 @@ class _HomeState extends State<Home> {
               size: 35.0,
             ),
             onPressed: () {
+              Navigator.pop(context);
               print("Back arrow pressed!");
             },
           ),
