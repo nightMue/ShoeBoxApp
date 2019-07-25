@@ -3,6 +3,7 @@ import 'package:nike_app/ui/home/boxes/shoe.dart';
 import 'package:nike_app/ui/home/boxes/shoeBox.dart';
 import 'package:nike_app/data/tempData.dart';
 import 'package:nike_app/ui/home/homeBottomDetails.dart';
+import 'package:nike_app/ui/home/sizeScroll.dart';
 
 import 'package:rect_getter/rect_getter.dart';
 
@@ -217,38 +218,7 @@ class _HomeBottomState extends State<HomeBottom> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                    child: GestureDetector(
-                      onTap: () => toggleStar(),
-                      child: Container(
-                        height: 65,
-                        width: 65,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade300),
-                          shape: BoxShape.circle,
-                          color: (_stared ? Colors.amber : Colors.white),
-                        ),
-                        child: Stack(
-                          children: <Widget>[
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Container(
-                                height: 20,
-                                width: 20,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade800,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: (_stared ? Icon(Icons.star, color: Colors.amber, size: 15.0,) : Icon(Icons.star, color: Colors.white, size: 15.0,)),
-                              ),
-                            ),
-                            Center(child: Text("4.3"),),
-                          ],
-                        )
-                      ),
-                    ),
-                  ),
+                  SizeScroll(),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
                     child: GestureDetector(
@@ -263,6 +233,7 @@ class _HomeBottomState extends State<HomeBottom> {
                           color: Colors.white
                         ),
                         child: (_favorited ? Icon(Icons.favorite, color: Colors.red,) : Icon(Icons.favorite_border, color: Colors.grey.shade800,)),
+                        //child: Icon(Icons.favorite_border),
                       ),
                     ),
                   ),
