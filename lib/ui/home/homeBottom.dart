@@ -12,7 +12,8 @@ class HomeBottom extends StatefulWidget {
 }
 
 class _HomeBottomState extends State<HomeBottom> {
-
+  double _prefScrollLocation;
+  int _currentIndex;
   List<double> boxOffsets; 
 
   ScrollController _ctrScroll;
@@ -28,7 +29,58 @@ class _HomeBottomState extends State<HomeBottom> {
 
   _onEndScroll(ScrollMetrics metrics) {
     double offset = _ctrScroll.offset;
+    if(_prefScrollLocation < offset)
+    {
+      //_moveRight();
+    }
+    else
+    {
+     // _moveLeft();
+    }
+    _prefScrollLocation = offset;
     _moveToItem(offset);
+  }
+
+  _moveRight()
+  {
+    print("Scrolling Right");
+    if(_currentIndex != boxOffsets.length - 1)
+    {
+      _currentIndex = _currentIndex + 1;
+      _ctrScroll.animateTo(
+        //boxOffsets[_currentIndex], 
+        (MediaQuery.of(context).size.width - 50) * _currentIndex,
+        duration: Duration(milliseconds: 100), 
+        curve: Curves.linear
+      );
+      _ctrScrollDetails.animateTo(
+        //boxOffsets[_currentIndex], 
+        (MediaQuery.of(context).size.width - 50) * _currentIndex,
+        duration: Duration(milliseconds: 100), 
+        curve: Curves.linear
+      );
+    }
+  }
+
+  _moveLeft()
+  {
+    print("Scrolling left");
+    if(_currentIndex != 0)
+    {
+      _currentIndex = _currentIndex - 1;
+      _ctrScroll.animateTo(
+        //boxOffsets[_currentIndex],
+        (MediaQuery.of(context).size.width - 50) * _currentIndex,
+        duration: Duration(milliseconds: 100), 
+        curve: Curves.linear
+      );
+      _ctrScrollDetails.animateTo(
+        //boxOffsets[_currentIndex], 
+        (MediaQuery.of(context).size.width - 50) * _currentIndex,
+        duration: Duration(milliseconds: 100), 
+        curve: Curves.linear
+      );
+    }
   }
 
   _moveToItem(double offset)
@@ -40,8 +92,9 @@ class _HomeBottomState extends State<HomeBottom> {
 
       if(offset > small && offset < big)
       {
-        _ctrScroll.animateTo(
-          boxOffsets[i+1],
+        //print(i-1);
+        _ctrScrollDetails.animateTo(
+          boxOffsets[i-1],
           duration:Duration(milliseconds: 100), 
           curve: Curves.linear);
       }
@@ -63,6 +116,8 @@ class _HomeBottomState extends State<HomeBottom> {
     _ctrScrollDetails = ScrollController();
     _ctrScrollDetails.addListener(_scrollListenerDetails);
     boxOffsets = List<double>();
+    _prefScrollLocation = 0.0;
+    _currentIndex = 0;
     //boxes = List<ShoeBox>();
     //boxes.add(ShoeBox("Nike 1", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 1", false)));
     //boxes.add(ShoeBox("Nike 2", Colors.red, "https://i.imgur.com/vCE8LAw.png", Shoe("Nike 2", false)));
