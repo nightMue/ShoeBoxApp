@@ -23,7 +23,8 @@ class _HomeBottomState extends State<HomeBottom> {
   ScrollController _ctrScroll;
   ScrollController _ctrScrollDetails;
 
-  PageController _ctrPage;
+  PageController _ctrPageBox;
+  PageController _ctrPageDetails;
 
   _onStartScroll(ScrollMetrics metrics) {
 
@@ -140,14 +141,18 @@ class _HomeBottomState extends State<HomeBottom> {
     _currentIndex = 0;
     _favorited = false;
     _stared = false;
-    _ctrPage = PageController(viewportFraction: 1.0);
+    _ctrPageBox = PageController(viewportFraction: 1.0);
+    _ctrPageDetails = PageController(viewportFraction: 1.0);
+    _ctrPageBox.addListener((){  
+      _ctrPageDetails.animateToPage(_ctrPageBox.page.round(), duration: Duration(milliseconds: 150), curve: Curves.linear);
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width-50;
-    for(var i = 0; i < adidasBoxes.length; i++)
+    for(var i = 0; i < adidasBoxes.length; i++)R
     {
       boxOffsets.add(i*width);
     }
@@ -207,7 +212,8 @@ class _HomeBottomState extends State<HomeBottom> {
                   SizedBox(
                     height: 320,
                     child: PageView.builder(
-                      controller: _ctrPage,//PageController(viewportFraction: 0.8),
+                      physics: BouncingScrollPhysics(),
+                      controller: _ctrPageBox,//PageController(viewportFraction: 0.8),
                       itemCount: adidasBoxes.length,
                       itemBuilder: (BuildContext context, int itemIndex) {
                         return _buildCarouselItemBox(context, itemIndex);
@@ -245,7 +251,8 @@ class _HomeBottomState extends State<HomeBottom> {
                   SizedBox(
                     height: 150,
                     child: PageView.builder(
-                      controller: _ctrPage,//PageController(viewportFraction: 0.8),
+                      physics: BouncingScrollPhysics(),
+                      controller: _ctrPageDetails,//PageController(viewportFraction: 0.8),
                       itemCount: adidasDetails.length,
                       itemBuilder: (BuildContext context, int itemIndex) {
                         return _buildCarouselItemDetail(context, itemIndex);
