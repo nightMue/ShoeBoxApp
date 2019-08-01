@@ -152,7 +152,7 @@ class _HomeBottomState extends State<HomeBottom> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width-50;
-    for(var i = 0; i < adidasBoxes.length; i++)R
+    for(var i = 0; i < adidasBoxes.length; i++)
     {
       boxOffsets.add(i*width);
     }
