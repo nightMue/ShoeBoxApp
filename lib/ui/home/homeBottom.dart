@@ -200,7 +200,7 @@ class _HomeBottomState extends State<HomeBottom> {
             // ----------------
             // HomeBottomDetails(),
             // ----------------
-            Container(
+            /*Container(
               height: 150,
               color: Colors.transparent,
               child: ListView.builder(
@@ -211,7 +211,28 @@ class _HomeBottomState extends State<HomeBottom> {
                   return adidasDetails[index];
                 },
               ),
+            ),*/
+
+            Container(
+              height: 150,
+              color: Colors.transparent,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    height: 150,
+                    child: PageView.builder(
+                      controller: PageController(viewportFraction: 0.8),
+                      itemCount: adidasDetails.length,
+                      itemBuilder: (BuildContext context, int itemIndex) {
+                        return _buildCarouselItem(context, itemIndex);
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
+
             Container(
               height: 100,
               color:Colors.transparent,
@@ -229,11 +250,9 @@ class _HomeBottomState extends State<HomeBottom> {
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey.shade300),
                           shape: BoxShape.circle,
-                          //color: (_favorited ? Colors.red : Colors.white),
                           color: Colors.white
                         ),
                         child: (_favorited ? Icon(Icons.favorite, color: Colors.red,) : Icon(Icons.favorite_border, color: Colors.grey.shade800,)),
-                        //child: Icon(Icons.favorite_border),
                       ),
                     ),
                   ),
@@ -244,5 +263,21 @@ class _HomeBottomState extends State<HomeBottom> {
         ),
       ),
     );
+  }
+
+  Widget _buildCarouselItem(BuildContext context, int itemIndex) {
+    /*return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        ),
+        child: Center(
+          child: Text(itemIndex.toString()),
+        ),
+      ),
+    );*/
+    return adidasDetails[itemIndex];
   }
 }
