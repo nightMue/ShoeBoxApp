@@ -8,7 +8,9 @@ This is a Flutter/Dart implementation of a shoe app design.
 The first page is a list view of brands for concept realizaion. Each brand will still take you to 
 the same one. It is just there to show some idea behind were this main boxe view page could be used.
 
-- [Nicholas Mueller](https://www.linkedin.com/in/nicholas-mueller-b12006b6/)
+## Contact Me
+- [LinkedIn - Nicholas Mueller](https://www.linkedin.com/in/nicholas-mueller-b12006b6/)
+- [Personal Site - Where I mess around with stuff](https://nightmue.github.io/)
 
 A few resources to get you started if this is your first Flutter project:
 
