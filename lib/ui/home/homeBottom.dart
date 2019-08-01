@@ -23,6 +23,8 @@ class _HomeBottomState extends State<HomeBottom> {
   ScrollController _ctrScroll;
   ScrollController _ctrScrollDetails;
 
+  PageController _ctrPage;
+
   _onStartScroll(ScrollMetrics metrics) {
 
   }
@@ -138,6 +140,7 @@ class _HomeBottomState extends State<HomeBottom> {
     _currentIndex = 0;
     _favorited = false;
     _stared = false;
+    _ctrPage = PageController(viewportFraction: 1.0);
     super.initState();
   }
 
@@ -170,7 +173,7 @@ class _HomeBottomState extends State<HomeBottom> {
         margin: EdgeInsets.fromLTRB(25, 25, 25, 60),
         child: Column(
           children: <Widget>[
-            Container(
+            /*Container(
               height: 320,
               color: Colors.transparent,
               //slider
@@ -192,6 +195,26 @@ class _HomeBottomState extends State<HomeBottom> {
                     return adidasBoxes[index];
                   },
                 ),
+              ),
+            ),*/
+
+            Container(
+              height: 320,
+              color: Colors.transparent,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    height: 320,
+                    child: PageView.builder(
+                      controller: _ctrPage,//PageController(viewportFraction: 0.8),
+                      itemCount: adidasBoxes.length,
+                      itemBuilder: (BuildContext context, int itemIndex) {
+                        return _buildCarouselItemBox(context, itemIndex);
+                      },
+                    ),
+                  )
+                ],
               ),
             ),
 
@@ -222,10 +245,10 @@ class _HomeBottomState extends State<HomeBottom> {
                   SizedBox(
                     height: 150,
                     child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.8),
+                      controller: _ctrPage,//PageController(viewportFraction: 0.8),
                       itemCount: adidasDetails.length,
                       itemBuilder: (BuildContext context, int itemIndex) {
-                        return _buildCarouselItem(context, itemIndex);
+                        return _buildCarouselItemDetail(context, itemIndex);
                       },
                     ),
                   )
@@ -265,7 +288,7 @@ class _HomeBottomState extends State<HomeBottom> {
     );
   }
 
-  Widget _buildCarouselItem(BuildContext context, int itemIndex) {
+  Widget _buildCarouselItemDetail(BuildContext context, int itemIndex) {
     /*return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Container(
@@ -279,5 +302,21 @@ class _HomeBottomState extends State<HomeBottom> {
       ),
     );*/
     return adidasDetails[itemIndex];
+  }
+
+  Widget _buildCarouselItemBox(BuildContext context, int itemIndex) {
+    /*return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        ),
+        child: Center(
+          child: Text(itemIndex.toString()),
+        ),
+      ),
+    );*/
+    return adidasBoxes[itemIndex];
   }
 }
