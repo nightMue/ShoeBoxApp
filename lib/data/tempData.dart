@@ -13,11 +13,11 @@ List<ShoeBox> adidasBoxes = [
 ];
 
 List<ShoeBoxDetail> adidasDetails = [
-  ShoeBoxDetail("Mens Shoe", "Shoe 1",  "\$125"),
-  ShoeBoxDetail("Mens Shoe", "Shoe 2",  "\$135"),
-  ShoeBoxDetail("Womens Shoe", "Shoe 3",  "\$145"),
-  ShoeBoxDetail("Womens Shoe", "Shoe 4",  "\$155"),
-  ShoeBoxDetail("Mens Shoe", "Shoe 5",  "\$165")
+  ShoeBoxDetail("MEN'S SHOE", "Shoe 1",  "\$125"),
+  ShoeBoxDetail("MEN'S SHOE", "Shoe 2",  "\$135"),
+  ShoeBoxDetail("WOMEN'S SHOE", "Shoe 3",  "\$145"),
+  ShoeBoxDetail("WOMEN'S SHOE", "Shoe 4",  "\$155"),
+  ShoeBoxDetail("MEN'S SHOE", "Shoe 5",  "\$165")
 ];
 
 List<Brand> brands = [

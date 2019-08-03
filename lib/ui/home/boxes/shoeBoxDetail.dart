@@ -45,9 +45,10 @@ class _ShoeBoxDetailState extends State<ShoeBoxDetail> {
           Text(
             price,
             style: TextStyle(
+                fontFamily: 'Montserrat',
                 fontSize: 40.0,
                 color: Colors.grey.shade800,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.w600),
           ),
         ],
       ),
