@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nike_app/ui/home/brand/brandListView.dart';
-import 'package:nike_app/ui/home/home.dart';
 
 void main() => runApp(MyApp());
 

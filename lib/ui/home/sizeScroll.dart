@@ -67,7 +67,20 @@ class _SizeScrollState extends State<SizeScroll> {
                 //SizeScroll(),
               ],
             )),
-            ListView.builder(
+            PageView.builder(
+              physics: BouncingScrollPhysics(),
+              controller: PageController(
+                viewportFraction: 1.0,
+                initialPage: (sizes.length / 2).round(),
+              ),
+              scrollDirection: Axis.vertical,
+              itemCount: sizes.length,
+              itemBuilder: (BuildContext context, int itemIndex) {
+                return _buildCarouselItemSize(context, itemIndex);
+              },
+            ),
+
+            /*ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: sizes.length,
               itemBuilder: (context, index) {
@@ -84,10 +97,26 @@ class _SizeScrollState extends State<SizeScroll> {
                   ),
                 );
               },
-            ),
+            ),*/
           ],
         )
       ),
     ));
+  }
+
+  Widget _buildCarouselItemSize(BuildContext context, int itemIndex)
+  {
+    return Container(
+      height: 65,
+      width: 65,
+      child: Center(
+        child: Text(
+          sizes[itemIndex].toString(),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
   }
 }

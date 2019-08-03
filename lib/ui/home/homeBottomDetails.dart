@@ -10,7 +10,7 @@ class _HomeBottomDetailsState extends State<HomeBottomDetails> {
   ScrollController _ctrScroll;
   
   _scrollListener() {
-    double itemSize = MediaQuery.of(context).size.width - 50;
+    //double itemSize = MediaQuery.of(context).size.width - 50;
 
     // commented out code on mobile base station
   }
