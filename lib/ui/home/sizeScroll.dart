@@ -8,6 +8,7 @@ class SizeScroll extends StatefulWidget {
 class _SizeScrollState extends State<SizeScroll> {
   bool _stared;
 
+  // remove stared?! make there a up and down icon to help with navigation possibly
   void toggleStar() {
     setState(() {
       _stared = (_stared ? false : true);
