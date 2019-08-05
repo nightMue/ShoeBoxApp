@@ -6,10 +6,9 @@ class DetailsListGroup extends StatefulWidget {
   _DetailsListGroupState createState() => _DetailsListGroupState();
 }
 
-/**
- * Might need to put this into the homeBottom.dart so that the controllers for 
- * each detail item will be affected from the box controller when scrolled
- */
+/// Might need to put this into the homeBottom.dart so that the controllers for 
+/// each detail item will be affected from the box controller when scrolled
+
 class _DetailsListGroupState extends State<DetailsListGroup> {
   PageController _ctrPageDetails;
 

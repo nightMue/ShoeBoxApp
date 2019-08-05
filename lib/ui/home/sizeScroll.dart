@@ -15,7 +15,7 @@ class _SizeScrollState extends State<SizeScroll> {
     });
   }
 
-  List<double> sizes = [4.0, 4.5, 6.0, 8.5, 9.0, 10.0];
+  List<double> sizes = [10.0, 9.0, 8.5, 6.0, 4.5, 4.0];
 
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _SizeScrollState extends State<SizeScroll> {
                       color: Colors.grey.shade400,
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(Icons.remove, size: 15.0,),
+                    child: Icon(Icons.add, size: 15.0,),
                   ),
                 ),
                 Align(
@@ -70,7 +70,7 @@ class _SizeScrollState extends State<SizeScroll> {
                       color: Colors.grey.shade400,
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(Icons.add, size: 15.0,),
+                    child: Icon(Icons.remove, size: 15.0,),
                   ),
                 ),
 

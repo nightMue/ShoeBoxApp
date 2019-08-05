@@ -32,3 +32,27 @@ List<Brand> brands = [
   Brand("New Balance", "https://i.imgur.com/4akrVvG.png"),
   Brand("ReeBook", "https://i.imgur.com/4akrVvG.png")
 ];
+
+List<String> detailLineTop = [
+  "MEN'S SHOE",
+  "MEN'S SHOE",
+  "WOMENS'S SHOE",
+  "WOMENS'S SHOE",
+  "MEN'S SHOE",
+];
+
+List<String> detailLineMiddle = [
+  "SHOE 1",
+  "SHOE 2",
+  "SHOE 3",
+  "SHOE 4",
+  "SHOE 5",
+];
+
+List<String> detailLineBottom = [
+  "\$125",
+  "\$135",
+  "\$145",
+  "\$155",
+  "\$165",
+];

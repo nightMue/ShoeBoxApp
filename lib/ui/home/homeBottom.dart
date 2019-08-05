@@ -11,7 +11,10 @@ class _HomeBottomState extends State<HomeBottom> {
   bool _favorited;
 
   PageController _ctrPageBox;
-  PageController _ctrPageDetails;
+  //PageController _ctrPageDetails;
+  PageController _ctrPageDetailLineTop;
+  PageController _ctrPageDetailLineMiddle;
+  PageController _ctrPageDetailLineBottom;
 
   _toggleFavorite()
   {
@@ -24,9 +27,15 @@ class _HomeBottomState extends State<HomeBottom> {
   void initState() {
     _favorited = false;
     _ctrPageBox = PageController(viewportFraction: 0.8);
-    _ctrPageDetails = PageController(viewportFraction: 1.0);
+    //_ctrPageDetails = PageController(viewportFraction: 1.0);
+    _ctrPageDetailLineTop = PageController(viewportFraction: 1.0);
+    _ctrPageDetailLineMiddle = PageController(viewportFraction: 1.0);
+    _ctrPageDetailLineBottom = PageController(viewportFraction: 1.0);
     _ctrPageBox.addListener((){  
-      _ctrPageDetails.animateToPage(_ctrPageBox.page.round(), duration: Duration(milliseconds: 150), curve: Curves.linear);
+      //_ctrPageDetails.animateToPage(_ctrPageBox.page.round(), duration: Duration(milliseconds: 150), curve: Curves.linear);
+      _ctrPageDetailLineTop.animateToPage(_ctrPageBox.page.round(), duration: Duration(milliseconds: 150), curve: Curves.linear);
+      _ctrPageDetailLineMiddle.animateToPage(_ctrPageBox.page.round(), duration: Duration(milliseconds: 160), curve: Curves.linear);
+      _ctrPageDetailLineBottom.animateToPage(_ctrPageBox.page.round(), duration: Duration(milliseconds: 170), curve: Curves.linear);
     });
     super.initState();
   }
@@ -75,6 +84,70 @@ class _HomeBottomState extends State<HomeBottom> {
                 ],
               ),
             ),
+            
+            Container(
+              height: 50,
+              color: Colors.transparent,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    height: 50,
+                    child: PageView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: _ctrPageDetailLineTop,
+                      itemCount:  detailLineTop.length,
+                      itemBuilder: (BuildContext context, int itemIndex) {
+                        return _buildCarouselDetailLineTop(context, itemIndex);
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              height: 50,
+              color: Colors.transparent,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    height: 50,
+                    child: PageView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: _ctrPageDetailLineMiddle,
+                      itemCount:  detailLineMiddle.length,
+                      itemBuilder: (BuildContext context, int itemIndex) {
+                        return _buildCarouselDetailLineMiddle(context, itemIndex);
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              height: 50,
+              color: Colors.transparent,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    height: 50,
+                    child: PageView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: _ctrPageDetailLineBottom,
+                      itemCount:  detailLineBottom.length,
+                      itemBuilder: (BuildContext context, int itemIndex) {
+                        return _buildCarouselDetailLineBottom(context, itemIndex);
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+            // Details container with single element block page view for details
+            /*
             Container(
               height: 150,
               color: Colors.transparent,
@@ -84,7 +157,7 @@ class _HomeBottomState extends State<HomeBottom> {
                   SizedBox(
                     height: 150,
                     child: PageView.builder(
-                      physics: BouncingScrollPhysics(),
+                      physics: NeverScrollableScrollPhysics(),
                       controller: _ctrPageDetails,//PageController(viewportFraction: 0.8),
                       itemCount: adidasDetails.length,
                       itemBuilder: (BuildContext context, int itemIndex) {
@@ -94,7 +167,7 @@ class _HomeBottomState extends State<HomeBottom> {
                   )
                 ],
               ),
-            ),
+            ),*/
             Container(
               height: 100,
               color:Colors.transparent,
@@ -127,35 +200,52 @@ class _HomeBottomState extends State<HomeBottom> {
     );
   }
 
-  Widget _buildCarouselItemDetail(BuildContext context, int itemIndex) {
-    /*return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-        ),
-        child: Center(
-          child: Text(itemIndex.toString()),
-        ),
-      ),
-    );*/
-    return adidasDetails[itemIndex];
-  }
+  //Widget _buildCarouselItemDetail(BuildContext context, int itemIndex) {
+  //  return adidasDetails[itemIndex];
+  //}
 
   Widget _buildCarouselItemBox(BuildContext context, int itemIndex) {
-    /*return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-        ),
-        child: Center(
-          child: Text(itemIndex.toString()),
-        ),
-      ),
-    );*/
     return adidasBoxes[itemIndex];
   }
+
+  Widget _buildCarouselDetailLineTop(BuildContext context, int itemIndex) {
+    return Center(
+      child: Text(
+        detailLineTop[itemIndex],
+        style: TextStyle(
+          fontSize: 15.0,
+          color: Colors.grey,
+          fontWeight: FontWeight.bold
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCarouselDetailLineMiddle(BuildContext context, int itemIndex) {
+    return Center(
+      child: Text(
+        detailLineMiddle[itemIndex],
+        style: TextStyle(
+          fontSize: 35.0,
+          color: Colors.grey.shade800,
+          fontWeight: FontWeight.w500
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCarouselDetailLineBottom(BuildContext context, int itemIndex) {
+    return Center(
+      child: Text(
+        detailLineBottom[itemIndex],
+        style: TextStyle(
+          fontFamily: 'Montserrat',
+          fontSize: 40.0,
+          color: Colors.grey.shade800,
+          fontWeight: FontWeight.w600
+        ),
+      ),
+    );
+  }
+  
 }
