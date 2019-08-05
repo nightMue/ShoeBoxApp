@@ -48,7 +48,34 @@ class _SizeScrollState extends State<SizeScroll> {
             ),
             child: Stack(
               children: <Widget>[
+                
                 Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade400,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(Icons.remove, size: 15.0,),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade400,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(Icons.add, size: 15.0,),
+                  ),
+                ),
+
+
+                /*Align(
                   alignment: Alignment.topRight,
                   child: Container(
                     height: 20,
@@ -62,7 +89,7 @@ class _SizeScrollState extends State<SizeScroll> {
                     // avalible implementation (checkmark)
                     child: (_stared ? Icon(Icons.check_circle_outline, color: Colors.green.shade700, size: 15.0,) : Icon(Icons.not_interested, color: Colors.red, size: 15.0,)),
                   ),
-                ),
+                ),*/
                 // This is for the ratining
                 //Center(child: Text("4.3"),),
                 //SizeScroll(),
