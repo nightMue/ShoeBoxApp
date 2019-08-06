@@ -226,6 +226,7 @@ class _HomeBottomState extends State<HomeBottom> {
       child: Text(
         detailLineMiddle[itemIndex],
         style: TextStyle(
+          fontFamily: 'Montserrat',
           fontSize: 35.0,
           color: Colors.grey.shade800,
           fontWeight: FontWeight.w500
