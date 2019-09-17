@@ -1,11 +1,11 @@
-# Shoe Box App
-
-![](gif.gif)
-
-## Implementation of a shoe app design
+# Implementation of a shoe app design
 
 This is a Flutter/Dart implementation of a shoe app design.
 - Designed by [Sang Nguyen](https://dribbble.com/sanggggg)
+
+Below is the my implementation of a shoebox design. I have changed a few things. All that is left if to implement the Flare animatino for the box opening/closing but I do not have the Adobe After Effects animation file to import into Flare.
+
+![](shoebox.gif)
 
 The first page is a list view of brands for concept realizaion. Each brand will still take you to 
 the same one. It is just there to show some idea behind were this main boxe view page could be used.
@@ -23,5 +23,3 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
 
-[Implemented Demo Animation]:  https://github.com/nightMue/ShoeBoxApp/tree/master/assets/gif.gif
-[demo]: https://github.com/nightMue/ShoeBoxApp/tree/master/assets/gif.gif
