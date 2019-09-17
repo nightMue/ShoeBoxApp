@@ -24,4 +24,4 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 [Implemented Demo Animation]:  https://github.com/nightMue/ShoeBoxApp/tree/master/assets/gif.gif
-[demo]: https://github.com/nightMue/ShoeBoxApp
+[demo]: https://github.com/nightMue/ShoeBoxApp/tree/master/assets/gif.gif
