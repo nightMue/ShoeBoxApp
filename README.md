@@ -1,6 +1,6 @@
 # Shoe Box App
 
-[![Implemented Demo](https://j.gifs.com/OMLLGr.gif)]
+[![Implemented Demo Animation][]][Demo]
 
 ## Implementation of a shoe app design
 
@@ -22,3 +22,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+
+[Implemented Demo Animation]:  https://j.gifs.com/OMLLGr.gif
+[demo]: https://github.com/nightMue/ShoeBoxApp
