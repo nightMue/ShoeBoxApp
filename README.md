@@ -1,5 +1,7 @@
 # Shoe Box App
 
+[![Implemented Demo](https://j.gifs.com/OMLLGr.gif)]
+
 ## Implementation of a shoe app design
 
 This is a Flutter/Dart implementation of a shoe app design.
