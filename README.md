@@ -1,6 +1,6 @@
 # Shoe Box App
 
-![Implemented Sample](https://github.com/nightMue/ShoeBoxApp/tree/master/assets/gif.gif)
+![](gif.gif)
 
 ## Implementation of a shoe app design
 
